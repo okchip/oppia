@@ -1,0 +1,47 @@
+Checking if node.js is installed in /Users/ameenagolding/opensource/oppia_tools
+Generating list of installed node modules...
+Generation completed.
+Checking whether GAE is installed in /Users/ameenagolding/opensource/oppia_tools/google_appengine_1.9.19/google_appengine
+Environment setup completed.
+Installing third-party JS libraries and zip files.
+Checking whether gulp is installed
+Checking whether through2 is installed
+Checking whether yargs is installed
+Checking whether gulp-concat is installed
+Checking whether gulp-cssnano is installed
+Checking whether gulp-util is installed
+Checking whether jscs is installed
+Checking whether gulp-sourcemaps is installed
+Checking whether gulp-minify is installed
+Checking whether Skulpt is installed in third_party
+Checking if pip is installed on the local machine
+Checking if numpy is installed in /Users/ameenagolding/opensource/oppia_tools/pip_packages
+Checking if pylint is installed in /Users/ameenagolding/opensource/oppia_tools/pip_packages
+Checking if webtest is installed in third_party
+Installing pre-push hook for git
+Symlink already exists
+
+  INFORMATION
+  Setting up a local development server at localhost:8181. Opening a
+  Chrome browser window pointing to this server.
+
+Starting GAE development server
+[20:42:18] Using gulpfile ~/opensource/oppia/gulpfile.js
+[20:42:18] Starting 'collectDependencyFilepaths'...
+[20:42:18] Finished 'collectDependencyFilepaths' after 1.24 ms
+[20:42:18] Starting 'generateCss'...
+[20:42:18] Finished 'generateCss' after 27 ms
+[20:42:18] Starting 'copyFonts'...
+[20:42:18] Finished 'copyFonts' after 8.7 ms
+[20:42:18] Starting 'copyCssBackgroundImages'...
+[20:42:18] Finished 'copyCssBackgroundImages' after 1.73 ms
+[20:42:18] Starting 'generateJs'...
+[20:42:18] Finished 'generateJs' after 17 ms
+[20:42:18] Starting 'build'...
+[20:42:18] Finished 'build' after 9.85 μs
+[20:42:18] Starting 'gulpStartGae'...
+[20:42:18] Finished 'gulpStartGae' after 2.14 ms
+[20:42:18] Starting 'watch'...
+[20:42:18] Finished 'watch' after 64 ms
+[20:42:18] Starting 'start_devserver'...
+[20:42:18] Finished 'start_devserver' after 10 μs
