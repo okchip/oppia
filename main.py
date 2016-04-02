@@ -67,9 +67,10 @@ class HomePageRedirectHandler(base.BaseHandler):
     "Check whether user is logged in or logged out and perform redirects on '/'"
     def get(self):
         if self.user_id and user_services.has_fully_registered(self.user_id):
-            self.redirect(feconf.MY_EXPLORATIONS_URL)
+            #MY_EXPLORATIONS_URL
+            self.redirect(feconf.FULL_GALLERY_URL)
         else:
-            self.redirect(feconf.GALLERY_URL)
+            self.redirect(feconf.FULL_GALLERY_URL)
 
 
 def get_redirect_route(regex_route, handler, name, defaults=None):
@@ -183,6 +184,9 @@ URLS = MAPREDUCE_HANDLERS + [
         resources.ValueGeneratorHandler, 'value_generator_handler'),
 
     get_redirect_route(r'/', HomePageRedirectHandler, 'home_page'),
+
+    get_redirect_route(
+       r'%s' % feconf.FULL_GALLERY_URL, galleries.GalleryHandler, 'home_page'),
 
     get_redirect_route(
         r'%s' % feconf.GALLERY_URL, galleries.GalleryPage, 'gallery_page'),
