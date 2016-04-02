@@ -150,7 +150,7 @@ class UpdateContributionMsecTests(test_utils.GenericTestBase):
 
         self.signup(self.ADMIN_EMAIL, self.ADMIN_USERNAME)
         self.admin_id = self.get_user_id_from_email(self.ADMIN_EMAIL)
-        self.set_admins([self.ADMIN_EMAIL])
+        self.set_admins([self.ADMIN_USERNAME])
 
         self.signup(self.EDITOR_EMAIL, self.EDITOR_USERNAME)
         self.editor_id = self.get_user_id_from_email(self.EDITOR_EMAIL)
@@ -265,6 +265,8 @@ class UpdateContributionMsecTests(test_utils.GenericTestBase):
 
         collection_services.publish_collection_and_update_user_profiles(
             self.admin_id, self.COL_ID)
+        exp_services.publish_exploration_and_update_user_profiles(
+            self.admin_id, self.EXP_ID)
 
         # Test all owners and editors of collection after publication have
         # updated first contribution times.

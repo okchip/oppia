@@ -15,8 +15,6 @@
 /**
  * @fileoverview Controllers for the learner view breadcrumb section of the
  * navbar.
- *
- * @author sean@seanlip.org (Sean Lip)
  */
 
 oppia.controller('LearnerViewBreadcrumb', [
@@ -56,10 +54,10 @@ oppia.controller('LearnerViewBreadcrumb', [
         controller: [
           '$scope', '$window', '$modalInstance', 'oppiaHtmlEscaper',
           'ExplorationEmbedButtonService', 'oppiaDatetimeFormatter',
-          'RatingComputationService', 'expInfo',
+          'RatingComputationService', 'expInfo', 'siteAnalyticsService',
           function($scope, $window, $modalInstance, oppiaHtmlEscaper,
                    ExplorationEmbedButtonService, oppiaDatetimeFormatter,
-                   RatingComputationService, expInfo) {
+                   RatingComputationService, expInfo, siteAnalyticsService) {
             var getExplorationTagsSummary = function(arrayOfTags) {
               var tagsToShow = [];
               var tagsInTooltip = [];
@@ -89,7 +87,17 @@ oppia.controller('LearnerViewBreadcrumb', [
 
             $scope.averageRating = (
               RatingComputationService.computeAverageRating(expInfo.ratings));
-            $scope.contributorNames = expInfo.contributor_names;
+            var contributorsSummary = (
+              expInfo.human_readable_contributors_summary || {});
+            $scope.contributorNames = Object.keys(contributorsSummary).sort(
+              function(contributorUsername1, contributorUsername2) {
+                var commitsOfContributor1 = contributorsSummary[
+                  contributorUsername1].num_commits;
+                var commitsOfContributor2 = contributorsSummary[
+                  contributorUsername2].num_commits;
+                return commitsOfContributor2 - commitsOfContributor1;
+              }
+            );
             $scope.explorationId = expInfo.id;
             $scope.escapedTwitterText = (
               oppiaHtmlEscaper.unescapedStrToEscapedStr(
@@ -111,6 +119,10 @@ oppia.controller('LearnerViewBreadcrumb', [
 
             $scope.cancel = function() {
               $modalInstance.dismiss();
+            };
+
+            $scope.registerShareExplorationEvent = function(network) {
+              siteAnalyticsService.registerShareExplorationEvent(network);
             };
           }
         ]
