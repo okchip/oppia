@@ -100,9 +100,8 @@ fi
 # Note that numpy needs to be built after downloading.
 echo Checking if numpy is installed in $TOOLS_DIR/pip_packages
 if [ ! -d "$TOOLS_DIR/numpy-1.6.1" ]; then
-  echo Installing numpy
-
-  pip install numpy==1.6.1 --target="$TOOLS_DIR/numpy-1.6.1"
+   echo Installing numpy
+   pip install numpy==1.10.4 --target="$TOOLS_DIR/numpy-1.6.1"
 fi
 
 echo Checking if pylint is installed in $TOOLS_DIR/pip_packages
